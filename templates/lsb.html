@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Penyisipan Pesan pada Bit Gambar</title>
+</head>
+<body>
+    <h1>Penyisipan Pesan pada Bit Gambar</h1>
+
+    <form action="/embed" method="POST" enctype="multipart/form-data">
+        <label for="image">Pilih Gambar:</label>
+        <input type="file" name="image" accept=".bmp, .png, .jpg, .jpeg"><br><br>
+        <label for="message">Pesan yang akan Disisipkan:</label>
+        <input type="text" name="message"><br><br>
+        <input type="submit" value="Sisipkan Pesan">
+    </form>
+
+    <hr>
+
+    <form action="/decrypt" method="POST" enctype="multipart/form-data">
+        <label for="encoded_image">Pilih Gambar Terenkripsi:</label>
+        <input type="file" name="encoded_image" accept=".png, .bmp"><br><br>
+        <input type="submit" value="Dekripsi Pesan">
+    </form>
+</body>
+</html>

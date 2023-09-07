@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Steganography</title>
+</head>
+<body>
+    <h1>Video Steganography</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <h2>Embed Data into Video</h2>
+        <label for="video">Select Video:</label>
+        <input type="file" name="video" id="video" accept=".avi"><br>
+        <label for="data">Enter Data to Embed:</label>
+        <textarea name="data" id="data" rows="4" cols="50"></textarea><br>
+        <input type="submit" name="embed" value="Embed">
+    </form>
+
+    <form method="POST" enctype="multipart/form-data">
+        <h2>Extract Data from Video</h2>
+        <label for="extract_video">Select Video:</label>
+        <input type="file" name="extract_video" id="extract_video" accept=".avi"><br>
+        <input type="submit" name="extract" value="Extract">
+    </form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div>
+        <h2>Result:</h2>
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+    
+    {% if stego_video_exists %}
+<form method="GET" action="/download">
+    <input type="submit" name="download" value="Download Stego Video">
+</form>
+{% endif %}
+
+</body>
+</html>
